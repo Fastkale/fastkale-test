@@ -28,9 +28,10 @@ jobs:
 
       - name: Install and build
         env:
-          VITE_BASE_PATH: /${{ github.event.repository.name }}/
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
         run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          export VITE_BASE_PATH="/$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')/"
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
           npm run build
 
