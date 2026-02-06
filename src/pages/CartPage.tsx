@@ -33,7 +33,7 @@ export function CartPage({ token, onCartUpdate }: CartPageProps) {
   const totalResale = cart.total_resale_value ?? 0;
   const totalDonation = cart.total_donation_value ?? 0;
   const meetsMinimum = cart.meets_minimum ?? false;
-  const MIN = 50;
+  const minAmount = 50;
 
   return (
     <div style={{ background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', padding: 24 }}>
@@ -51,7 +51,7 @@ export function CartPage({ token, onCartUpdate }: CartPageProps) {
           <section style={{ marginBottom: 24 }}>
             <h3 style={{ marginBottom: 8, fontSize: 16 }}>Sell Now — Resale items</h3>
             <div style={{ fontSize: 14, color: '#666', marginBottom: 8 }}>
-              Resale minimum: $50 (currently ${totalResale.toFixed(2)})
+              Resale minimum: ${minAmount} (currently ${totalResale.toFixed(2)})
             </div>
             {resaleItems.map((item) => (
               <div key={item.item_id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid #eee' }}>
@@ -68,7 +68,7 @@ export function CartPage({ token, onCartUpdate }: CartPageProps) {
           <section style={{ marginBottom: 24 }}>
             <h3 style={{ marginBottom: 8, fontSize: 16 }}>Donate Now — Donation items</h3>
             <div style={{ fontSize: 14, color: '#666', marginBottom: 8 }}>
-              Donation minimum: $50 (currently ${totalDonation.toFixed(2)})
+              Donation minimum: ${minAmount} (currently ${totalDonation.toFixed(2)})
             </div>
             {donationItems.map((item) => (
               <div key={item.item_id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 0', borderBottom: '1px solid #eee' }}>

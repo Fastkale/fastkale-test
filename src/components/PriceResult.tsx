@@ -10,7 +10,6 @@ interface PriceResultProps {
 export function PriceResult({ scanResult, priceResult, onNext, error }: PriceResultProps) {
   const value = priceResult.estimated_resale_value;
   const hasPrice = value != null && value > 0;
-  const nextStep = priceResult.next_step;
 
   return (
     <div style={{ background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', padding: 24 }}>

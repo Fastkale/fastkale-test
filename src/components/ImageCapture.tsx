@@ -26,8 +26,10 @@ export function ImageCapture({ onSubmit, loading, error, onRetry }: ImageCapture
     }
     setSelectedFiles(valid);
     const urls = valid.map((f) => URL.createObjectURL(f));
-    setPreviewUrls((prev) => prev.forEach((u) => URL.revokeObjectURL(u)));
-    setPreviewUrls(urls);
+    setPreviewUrls((prev) => {
+      prev.forEach((u) => URL.revokeObjectURL(u));
+      return urls;
+    });
     e.target.value = '';
   };
 
@@ -45,8 +47,10 @@ export function ImageCapture({ onSubmit, loading, error, onRetry }: ImageCapture
   };
 
   const handleRetake = () => {
-    setPreviewUrls((prev) => prev.forEach((u) => URL.revokeObjectURL(u)));
-    setPreviewUrls([]);
+    setPreviewUrls((prev) => {
+      prev.forEach((u) => URL.revokeObjectURL(u));
+      return [];
+    });
     setSelectedFiles([]);
     fileInputRef.current?.click();
   };

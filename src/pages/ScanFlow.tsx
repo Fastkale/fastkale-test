@@ -25,7 +25,6 @@ export function ScanFlow({ token, onCartUpdate }: ScanFlowProps) {
   const [jewelryMetal, setJewelryMetal] = useState('Gold');
 
   const isJewelry = scanResult?.category?.display_name?.toLowerCase().includes('jewel') ?? false;
-  const needsJewelryBeforePrice = isJewelry && step === 'jewelry';
 
   const handleImagesSubmit = useCallback(
     async (files: File[]) => {

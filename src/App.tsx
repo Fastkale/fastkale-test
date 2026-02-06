@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { ScanFlow } from './pages/ScanFlow';
 import { CartPage } from './pages/CartPage';
 import { OfferPage } from './pages/OfferPage';

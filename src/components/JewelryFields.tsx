@@ -26,7 +26,6 @@ function getPurities(metal: string): string[] {
 }
 
 export function JewelryFields({
-  scanResult,
   weight,
   purity,
   metal,
