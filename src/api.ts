@@ -7,17 +7,10 @@ const BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:54321/functi
 
 export type DeviceType = 'mobile' | 'laptop';
 
-function getDeviceHeader(device: DeviceType): Record<string, string> {
-  if (device === 'mobile') {
-    return {
-      'X-Device-Type': 'mobile',
-      'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) FastKale-TestHarness/1.0',
-    };
-  }
-  return {
-    'X-Device-Type': 'laptop',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) FastKale-TestHarness/1.0',
-  };
+// Custom headers (X-Device-Type, User-Agent) are not sent to avoid CORS preflight
+// when backend Access-Control-Allow-Headers does not include them.
+function getDeviceHeader(_device: DeviceType): Record<string, string> {
+  return {};
 }
 
 export interface CallResult {
