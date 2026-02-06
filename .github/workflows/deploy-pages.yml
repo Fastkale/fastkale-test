@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install and build
         env:
@@ -34,6 +33,11 @@ jobs:
           export VITE_BASE_PATH="/$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')/"
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
           npm run build
+
+      - name: Verify build output
+        run: |
+          test -f dist/index.html || (echo "ERROR: dist/index.html not found - build failed" && exit 1)
+          ls -la dist/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
